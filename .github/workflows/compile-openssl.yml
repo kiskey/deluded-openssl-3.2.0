@@ -24,10 +24,15 @@ jobs:
         cd openssl-3.2.0
         ./config
         make -j$(nproc)
-        make install
+        
+    - name: Package OpenSSL 3
+        run: |
+          mkdir -p openssl-package
+          cp -r openssl-3.2.0/bin openssl-package/
+          cp -r openssl-3.2.0/lib openssl-package/
 
-    - name: Upload OpenSSL artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: openssl3
-        path: /usr/local/ssl
+    - name: Upload OpenSSL 3 artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: openssl3
+          path: openssl-package
