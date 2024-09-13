@@ -24,12 +24,20 @@ jobs:
         cd openssl-3.2.0
         ./config
         make -j$(nproc)
+
+    - name: List build directory contents
+      run: |
+        ls -la openssl-3.2.0
+        ls -la openssl-3.2.0/bin
+        ls -la openssl-3.2.0/lib
+
         
     - name: Package OpenSSL 3
       run: |
-        mkdir -p openssl-package
-        cp -r openssl-3.2.0/bin openssl-package/
-        cp -r openssl-3.2.0/lib openssl-package/
+        mkdir -p openssl-package/bin
+        mkdir -p openssl-package/lib
+        cp -r openssl-3.2.0/bin/* openssl-package/bin/
+        cp -r openssl-3.2.0/lib/* openssl-package/lib/
 
     - name: Upload OpenSSL 3 artifacts
       uses: actions/upload-artifact@v3
