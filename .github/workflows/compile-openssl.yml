@@ -32,7 +32,7 @@ jobs:
         cp -r openssl-3.2.0/lib openssl-package/
 
     - name: Upload OpenSSL 3 artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: openssl3
-          path: openssl-package
+      uses: actions/upload-artifact@v3
+      with:
+        name: openssl3
+        path: openssl-package
