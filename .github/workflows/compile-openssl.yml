@@ -21,7 +21,7 @@ jobs:
 
     - name: Compile OpenSSL 3
       run: |
-        cd openssl-3.0.0
+        cd openssl-3.2.0
         ./config
         make -j$(nproc)
         make install
